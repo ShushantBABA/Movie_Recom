@@ -1,0 +1,136 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hey", "Hello", "Good morning", "Is anyone there?", "Hola", "Yo", "What's up"],
+      "responses": ["Hello! Ready to find a great movie?", "Hi there! What kind of movie are you in the mood for?", "Hey! I'm your movie assistant. How can I help?"],
+      "context": [""]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye", "I'm leaving", "End chat", "Talk to you later"],
+      "responses": ["Enjoy your movie!", "See you later! Popcorn is waiting.", "Goodbye! Come back if you need more recommendations."],
+      "context": [""]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That helped", "Thanks a lot", "Great, thanks", "Appreciate it"],
+      "responses": ["You're welcome!", "Happy to help you find a great watch.", "No problem! Enjoy."],
+      "context": [""]
+    },
+    {
+      "tag": "options",
+      "patterns": ["What can you do?", "Help", "Menu", "How do I use this?", "What do you know?", "Features"],
+      "responses": ["I can recommend movies by genre (Action, Horror, Comedy), mood (Sad, Happy), or even suggest snacks!", "Try asking: 'Suggest a comedy', 'I feel sad', or 'What's on Netflix?'"],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_action",
+      "patterns": ["Suggest an action movie", "I want to watch action", "Best action films", "Give me something with explosions", "Action movies"],
+      "responses": ["If you like action, you must watch 'Mad Max: Fury Road', 'John Wick', or 'The Dark Knight'.", "For pure action, try 'Mission: Impossible - Fallout' or 'Gladiator'."],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_comedy",
+      "patterns": ["Suggest a comedy", "I want to laugh", "Funny movies", "Best comedy films", "Comedy recommendations"],
+      "responses": ["Need a laugh? Try 'Superbad', 'The Hangover', or 'Palm Springs'.", "'Step Brothers' and 'Booksmart' are hilarious choices."],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_horror",
+      "patterns": ["Scary movies", "Suggest a horror movie", "I want to be scared", "Best horror films", "Horror recommendations"],
+      "responses": ["For a real scare, watch 'Hereditary', 'The Conjuring', or 'Get Out'.", "If you want classics, try 'The Shining' or 'Halloween'."],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_scifi",
+      "patterns": ["Sci-fi movies", "Science fiction suggestions", "Space movies", "Futuristic movies", "Best sci-fi"],
+      "responses": ["'Interstellar' and 'Inception' are masterpieces. You should also check out 'Blade Runner 2049'.", "'The Matrix' is a must-watch for sci-fi fans."],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_romance",
+      "patterns": ["Romance movies", "Love story", "Suggest a romantic movie", "Date night movie", "Romantic films"],
+      "responses": ["For a great love story, watch 'The Notebook', 'La La Land', or 'Pride & Prejudice'.", "'Before Sunrise' is a beautiful choice for a thoughtful romance."],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_thriller",
+      "patterns": ["Thriller movies", "Suspense", "Mystery movies", "Keep me on the edge of my seat", "Psychological thriller"],
+      "responses": ["'Se7en', 'Gone Girl', and 'Shutter Island' will keep you guessing until the end.", "Try 'Parasite' or 'Prisoners' for intense suspense."],
+      "context": [""]
+    },
+    {
+      "tag": "recommend_animation",
+      "patterns": ["Animated movies", "Cartoons", "Disney movies", "Pixar movies", "Anime"],
+      "responses": ["You can't go wrong with 'Spider-Man: Into the Spider-Verse', 'Spirited Away', or 'The Lion King'.", "'Inside Out' and 'Coco' are fantastic for all ages."],
+      "context": [""]
+    },
+    {
+      "tag": "mood_sad",
+      "patterns": ["I feel sad", "I want to cry", "Sad movies", "Emotional movies", "Depressing movies"],
+      "responses": ["Sometimes a good cry helps. Try watching 'The Green Mile', 'Schindler's List', or 'Grave of the Fireflies'.", "'Eternal Sunshine of the Spotless Mind' is perfect for a melancholic mood."],
+      "context": [""]
+    },
+    {
+      "tag": "mood_happy",
+      "patterns": ["I want to feel good", "Feel good movies", "Cheer me up", "Happy movies", "Uplifting films"],
+      "responses": ["Watch 'The Secret Life of Walter Mitty', 'Amélie', or 'Paddington 2' to lift your spirits!", "'Ferris Bueller's Day Off' is a guaranteed mood booster."],
+      "context": [""]
+    },
+    {
+      "tag": "family_friendly",
+      "patterns": ["Movies for kids", "Family movies", "Something for children", "Kid friendly"],
+      "responses": ["'Toy Story', 'Finding Nemo', and 'Paddington' are great for the whole family.", "Try Studio Ghibli films like 'My Neighbor Totoro'."],
+      "context": [""]
+    },
+    {
+      "tag": "trending_movies",
+      "patterns": ["What is trending?", "Top movies right now", "Popular movies", "What should I watch today?", "Hot movies"],
+      "responses": ["Currently, everyone is talking about 'Oppenheimer' and 'Dune: Part Two'.", "The top charts are dominated by 'Spider-Man: Across the Spider-Verse' and 'The Batman'."],
+      "context": [""]
+    },
+    {
+      "tag": "search_actor",
+      "patterns": ["Movies with Tom Cruise", "Find movies by actor", "Who stars in this?", "Search by actor"],
+      "responses": ["You can search for an actor's name in the search bar above to see their full filmography!", "Tell me the actor's name and I can check my database."],
+      "context": [""]
+    },
+    {
+      "tag": "ticket_price",
+      "patterns": ["How much are tickets?", "Ticket price", "Cost of a movie ticket", "Cinema prices"],
+      "responses": ["Ticket prices depend on your local theater, but they usually range from $10 to $20.", "It varies by location and time of day."],
+      "context": [""]
+    },
+    {
+      "tag": "platform_netflix",
+      "patterns": ["Is this on Netflix?", "What's on Netflix?", "Netflix recommendations"],
+      "responses": ["Netflix has great originals like 'The Irishman' and 'Roma'. Check the 'Watch Now' button on the movie card.", "I can't check live availability, but Netflix usually has 'Stranger Things' and 'Glass Onion'."],
+      "context": [""]
+    },
+    {
+      "tag": "duration_short",
+      "patterns": ["Short movie", "Something quick", "Under 90 minutes", "I don't have much time"],
+      "responses": ["Try 'Run Lola Run' (80 mins) or 'Toy Story' (81 mins).", "A quiet Place' is also short and punchy (90 mins)."],
+      "context": [""]
+    },
+    {
+      "tag": "snacks",
+      "patterns": ["What should I eat?", "Best movie snacks", "Popcorn or nachos?"],
+      "responses": ["Popcorn is the classic choice! But nachos with extra cheese are a close second.", "Mix M&Ms with your popcorn. Trust me, it's a game changer."],
+      "context": [""]
+    },
+    {
+      "tag": "bot_identity",
+      "patterns": ["Who are you?", "What is your name?", "Are you real?"],
+      "responses": ["I am the MovieBot, created by Shushant to help you decide what to watch!", "I'm your virtual movie assistant."],
+      "context": [""]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [],
+      "responses": ["I'm not sure about that movie. Try checking the search bar!", "I didn't catch that. Try asking for a specific genre like 'Action' or 'Comedy'."],
+      "context": [""]
+    }
+  ]
+}
