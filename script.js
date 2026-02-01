@@ -80,7 +80,7 @@ async function sendMessage() {
 
     // 2. Send to Python Backend
     try {
-        let response = await fetch("https://movierecom-production.up.railway.app/chat", {
+        let response = await fetch("https://movierecom-production.up.railway.app", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: message })
