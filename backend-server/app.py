@@ -118,7 +118,5 @@ def chat():
     return jsonify({"response": response})
 
 if __name__ == '__main__':
-    # Use the PORT environment variable if available, otherwise 5000
     port = int(os.environ.get("PORT", 5000))
-    # Host must be 0.0.0.0 to be accessible on the cloud
     app.run(host='0.0.0.0', port=port)
