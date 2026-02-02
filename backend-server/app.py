@@ -10,6 +10,11 @@ import json
 import random
 import requests  
 
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('punkt_tab')  
+nltk.download('omw-1.4')
+
 app = Flask(__name__)
 CORS(app)
 

@@ -58,56 +58,58 @@ form.addEventListener("submit", (e) => {
 
 // Function to handle "Enter" key press
 function handleEnter(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
+  if (event.key === "Enter") {
+    sendMessage();
+  }
 }
 
 async function sendMessage() {
-    let inputField = document.getElementById("user-input");
-    let message = inputField.value;
-    
-    if (message.trim() === "") return;
+  let inputField = document.getElementById("user-input");
+  let message = inputField.value;
 
-    let chatBox = document.getElementById("chat-box");
+  if (message.trim() === "") return;
 
-    // 1. Add User Message (Right Side)
-    // Note: We create a DIV with class 'user-msg'
-    chatBox.innerHTML += `<div class="user-msg">${message}</div>`;
-    
-    inputField.value = ""; // Clear input
-    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll down
+  let chatBox = document.getElementById("chat-box");
 
-    // 2. Send to Python Backend
-    try {
-        let response = await fetch("https://movierecom-production.up.railway.app", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: message })
-        });
+  // 1. Add User Message (Right Side)
+  // Note: We create a DIV with class 'user-msg'
+  chatBox.innerHTML += `<div class="user-msg">${message}</div>`;
 
-        let data = await response.json();
-        
-        // 3. Add Bot Message (Left Side)
-        chatBox.innerHTML += `<div class="bot-msg">${data.response}</div>`;
-        
-        chatBox.scrollTop = chatBox.scrollHeight;
+  inputField.value = ""; // Clear input
+  chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll down
 
-    } catch (error) {
-        chatBox.innerHTML += `<div class="bot-msg" style="color:red">⚠️ Bot is offline.</div>`;
-    }
+  // 2. Send to Python Backend
+  try {
+    let response = await fetch(
+      "https://movierecom-production.up.railway.app/chat",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message }),
+      },
+    );
+
+    let data = await response.json();
+
+    // 3. Add Bot Message (Left Side)
+    chatBox.innerHTML += `<div class="bot-msg">${data.response}</div>`;
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+  } catch (error) {
+    chatBox.innerHTML += `<div class="bot-msg" style="color:red">⚠️ Bot is offline.</div>`;
+  }
 }
 
 // Optional: Toggle Chat Function
 function toggleChat() {
-    let chatBox = document.getElementById("chat-box");
-    let inputArea = document.getElementById("chat-input-area");
-    
-    if (chatBox.style.display === "none") {
-        chatBox.style.display = "flex";
-        inputArea.style.display = "flex";
-    } else {
-        chatBox.style.display = "none";
-        inputArea.style.display = "none";
-    }
+  let chatBox = document.getElementById("chat-box");
+  let inputArea = document.getElementById("chat-input-area");
+
+  if (chatBox.style.display === "none") {
+    chatBox.style.display = "flex";
+    inputArea.style.display = "flex";
+  } else {
+    chatBox.style.display = "none";
+    inputArea.style.display = "none";
+  }
 }
