@@ -19,10 +19,10 @@ app = Flask(__name__)
 CORS(app)
 
 lemmatizer = WordNetLemmatizer()
-model = load_model('chatbot_model.h5')
-intents = json.loads(open('intents.json').read())
-words = pickle.load(open('words.pkl', 'rb'))
-classes = pickle.load(open('classes.pkl', 'rb'))
+model = load_model(os.path.join(BASE_DIR, 'chatbot_model.h5'))
+intents = json.loads(open(os.path.join(BASE_DIR, 'intents.json')).read())
+words = pickle.load(open(os.path.join(BASE_DIR, 'words.pkl'), 'rb'))
+classes = pickle.load(open(os.path.join(BASE_DIR, 'classes.pkl'), 'rb'))
 
 TMDB_API_KEY = "3fd2be6f0c70a2a598f084ddfb75487c"  
 TMDB_BASE_URL = "https://api.themoviedb.org/3"
