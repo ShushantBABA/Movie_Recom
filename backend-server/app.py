@@ -11,6 +11,8 @@ import random
 import requests  
 from dotenv import load_dotenv
 
+
+
 load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,7 +23,19 @@ nltk.download('punkt_tab')
 nltk.download('omw-1.4')
 
 app = Flask(__name__)
-CORS(app)
+
+CORS(
+    app,
+    resources={r"/*": {"origins": "*"}},
+    supports_credentials=True
+)
+
+@app.after_request
+def after_request(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+    response.headers.add("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+    return response
 
 lemmatizer = WordNetLemmatizer()
 model = load_model(os.path.join(BASE_DIR, 'chatbot_model.h5'))
@@ -120,16 +134,20 @@ def get_response(ints, intents_json):
             break
     return result
 
-@app.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['POST', 'OPTIONS'])
 def chat():
+    if request.method == "OPTIONS":
+        return jsonify({}), 200
+
     message = request.json['message']
     ints = predict_class(message)
 
     if not ints:
-        return jsonify({"response": "🤖 I didn't understand that. Try asking for a movie genre!"})
+        return jsonify({"response": "🤖 I didn't understand that."})
 
     response = get_response(ints, intents)
     return jsonify({"response": response})
+
 
 
 if __name__ == '__main__':
