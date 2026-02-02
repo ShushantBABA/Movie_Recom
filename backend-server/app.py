@@ -25,9 +25,7 @@ nltk.download('omw-1.4')
 app = Flask(__name__)
 
 CORS(
-    app,
-    resources={r"/*": {"origins": "*"}},
-    supports_credentials=True
+    app, origins=["https://movierecom-production.up.railway.app/chat"]
 )
 
 @app.after_request
