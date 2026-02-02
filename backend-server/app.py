@@ -9,6 +9,11 @@ from keras.models import load_model
 import json
 import random
 import requests  
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -24,7 +29,7 @@ intents = json.loads(open(os.path.join(BASE_DIR, 'intents.json')).read())
 words = pickle.load(open(os.path.join(BASE_DIR, 'words.pkl'), 'rb'))
 classes = pickle.load(open(os.path.join(BASE_DIR, 'classes.pkl'), 'rb'))
 
-TMDB_API_KEY = "3fd2be6f0c70a2a598f084ddfb75487c"  
+TMDB_API_KEY = os.environ.get("TMDB_API_KEY") 
 TMDB_BASE_URL = "https://api.themoviedb.org/3"
 
 GENRE_MAP = {
@@ -119,8 +124,13 @@ def get_response(ints, intents_json):
 def chat():
     message = request.json['message']
     ints = predict_class(message)
+
+    if not ints:
+        return jsonify({"response": "🤖 I didn't understand that. Try asking for a movie genre!"})
+
     response = get_response(ints, intents)
     return jsonify({"response": response})
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
