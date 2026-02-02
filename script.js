@@ -1,6 +1,4 @@
 const KEY = "3fd2be6f0c70a2a598f084ddfb75487c";
-// For educational purposes only - DO NOT USE in production
-// Request your own key for free: https://developers.themoviedb.org/3
 const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${KEY}&page=1`;
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=`;
@@ -56,7 +54,6 @@ form.addEventListener("submit", (e) => {
   } else history.go(0);
 });
 
-// Function to handle "Enter" key press
 function handleEnter(event) {
   if (event.key === "Enter") {
     sendMessage();
@@ -71,14 +68,11 @@ async function sendMessage() {
 
   let chatBox = document.getElementById("chat-box");
 
-  // 1. Add User Message (Right Side)
-  // Note: We create a DIV with class 'user-msg'
   chatBox.innerHTML += `<div class="user-msg">${message}</div>`;
 
-  inputField.value = ""; // Clear input
-  chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll down
+  inputField.value = ""; 
+  chatBox.scrollTop = chatBox.scrollHeight; 
 
-  // 2. Send to Python Backend
   try {
     let response = await fetch(
       "https://movierecom-production.up.railway.app/chat",
@@ -91,7 +85,6 @@ async function sendMessage() {
 
     let data = await response.json();
 
-    // 3. Add Bot Message (Left Side)
     chatBox.innerHTML += `<div class="bot-msg">${data.response}</div>`;
 
     chatBox.scrollTop = chatBox.scrollHeight;
@@ -100,7 +93,6 @@ async function sendMessage() {
   }
 }
 
-// Optional: Toggle Chat Function
 function toggleChat() {
   let chatBox = document.getElementById("chat-box");
   let inputArea = document.getElementById("chat-input-area");
